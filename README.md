@@ -1,0 +1,1 @@
+# Frycoin_bot
