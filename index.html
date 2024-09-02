@@ -3,80 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRYCOIN Click Game</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            text-align: center;
-        }
-        .circle {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            margin: 20px auto;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .circle:hover {
-            background-color: #0056b3;
-            transform: scale(1.1);
-        }
-        .points {
-            font-size: 30px;
-            color: #333;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            transition: opacity 0.5s;
-        }
-        .icon {
-            width: 80px;
-            height: 80px;
-            background-image: url('sesame.png'); 
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            top: 10px;
-        }
-    </style>
+    <title>FRYCOIN App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="circle" onclick="sendClick()">
-            <div class="points" id="points">0</div>
-            <div class="icon"></div>
-            <div>FRYCOIN</div>
+    <div class="app-container">
+        <div class="header">
+            <h1>FRYCOIN</h1>
+            <div class="stats">
+                <span id="coins">2,661</span> <img src="coin.png" alt="Coin" class="coin-icon">
+            </div>
+        </div>
+
+        <div class="boost-buttons">
+            <button onclick="activateBoost('turbo')">Turbo</button>
+            <button onclick="activateBoost('energy')">Full Energy</button>
+        </div>
+
+        <div class="tabs">
+            <button onclick="showTab('frens')">Frens</button>
+            <button onclick="showTab('earn')">Earn</button>
+            <button onclick="showTab('boosts')">Boosts</button>
+            <button onclick="showTab('trade')">Trade</button>
+        </div>
+
+        <div id="content">
+            <div id="frens" class="tab-content">
+                <h2>Frens</h2>
+                <p>Number of invited friends: <span id="friendCount">0</span></p>
+                <button onclick="inviteFriend()">Invite a Friend</button>
+            </div>
+            <div id="earn" class="tab-content">
+                <h2>Earn</h2>
+                <p>Complete tasks to earn more coins!</p>
+                <button onclick="completeTask('telegram')">Join Telegram Channel</button>
+                <button onclick="completeTask('twitter')">Follow on Twitter</button>
+            </div>
+            <div id="boosts" class="tab-content">
+                <h2>Boosts</h2>
+                <p>Upgrade your clicking power and energy recharge.</p>
+                <button onclick="buyBoost('autoTap')">Buy Auto Tap Bot (200,000 Coins)</button>
+                <button onclick="buyBoost('multiTap')">Upgrade Multitap</button>
+            </div>
+            <div id="trade" class="tab-content">
+                <h2>Trade</h2>
+                <p>Trade your coins for rewards!</p>
+            </div>
         </div>
     </div>
-    <script>
-        let points = 0;
-        function sendClick() {
-            points++;
-            const pointsElement = document.getElementById('points');
-            pointsElement.innerText = points;
-            pointsElement.style.opacity = 1;
-            setTimeout(() => {
-                pointsElement.style.opacity = 0;
-            }, 500); // اختفاء الرمز بعد 0.5 ثانية
-        }
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
